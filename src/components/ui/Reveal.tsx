@@ -17,7 +17,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={cn("reveal", visible && "is-visible", className)}
+      className={cn("reveal min-w-0", visible && "is-visible", className)}
       style={{ transitionDelay: delayMs ? `${delayMs}ms` : undefined }}
     >
       {children}

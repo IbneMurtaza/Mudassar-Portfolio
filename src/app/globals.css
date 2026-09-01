@@ -90,7 +90,7 @@
     padding-inline: clamp(20px, 5vw, 72px);
   }
   .band-alt {
-    background: var(--color-bg-alt);
+    background: rgba(20, 18, 15, 0.9);
   }
   .wrap {
     max-width: 1180px;
@@ -152,5 +152,19 @@
   .reveal.is-visible {
     opacity: 1;
     transform: none;
+  }
+  .shots-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-5) transparent;
+  }
+  .shots-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .shots-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .shots-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-5);
+    border-radius: 999px;
   }
 }

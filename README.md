@@ -60,14 +60,18 @@ from the Contact section, but its content could not be fetched automatically
 merged in — verify the CV-derived copy against LinkedIn yourself and adjust
 `src/data/*.ts` if anything's out of date.
 
-Project screenshots (`public/projects/*`, referenced from `projects.ts`
-`shots` fields) are the official App Store marketing screenshots for
-GrocerApp, AgeWiser AI, CareWiser and NinjaHR, fetched via Apple's public
-iTunes lookup API. They're marketing images (each with its own baked-in
-device frame and brand color), not raw screen captures — that's why
+Each of the six shipped apps — Ride Safr, Drive Safr, GrocerApp, AgeWiser AI,
+CareWiser and NinjaHR — gets its own project card. Screenshots
+(`public/projects/*`, referenced from `projects.ts` `shots` fields) are the
+official App Store marketing screenshots for each app, fetched via Apple's
+public iTunes lookup API. They're marketing images (each with its own
+baked-in device frame and brand color), not raw screen captures — that's why
 `ProjectCard`'s screenshot tiles are plain rounded image cards rather than a
-simulated phone bezel. Ride Safr and Drive Safr have no App Store listing, so
-they're shown without screenshots rather than with placeholders.
+simulated phone bezel. The strip scrolls horizontally (`.shots-scroll` in
+`globals.css`) instead of wrapping, so a card can carry 4–5 shots without
+growing tall; a `min-w-0` on the card and its grid wrapper keeps that scroll
+contained to the strip instead of blowing out the page (same class of bug as
+the hero name/portrait fix — see git history).
 
 ## Still needed before shipping
 

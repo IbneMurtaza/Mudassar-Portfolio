@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { IconLink } from "@/components/ui/IconLink";
+import { MailIcon, LinkedInIcon } from "@/components/ui/icons";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
@@ -60,15 +63,17 @@ export function Contact() {
           <p className="mt-5 max-w-[40ch] text-[17px] leading-[1.6] text-muted-2">
             Hiring, collaborating, or a question about the work — send a note.
           </p>
-          <div className="mt-[30px] grid gap-2.5 text-[15.5px]">
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer">
-              {profile.linkedinLabel}
-            </a>
-            <a href={profile.resumeUrl} download>
-              Download résumé
-            </a>
+          <div className="mt-[30px] flex items-center gap-3">
+            <IconLink href={`mailto:${profile.email}`} label="Email">
+              <MailIcon className="h-[19px] w-[19px]" />
+            </IconLink>
+            <IconLink href={profile.linkedinUrl} label="LinkedIn" external>
+              <LinkedInIcon className="h-[19px] w-[19px]" />
+            </IconLink>
           </div>
+          <Button href={profile.resumeUrl} variant="secondary" className="mt-4" download>
+            Download résumé
+          </Button>
         </div>
 
         <form onSubmit={handleSubmit} noValidate className="grid gap-3">

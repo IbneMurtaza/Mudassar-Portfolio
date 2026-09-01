@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ParticlesBackground } from "@/components/ui/ParticlesBackground";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Record } from "@/components/sections/Record";
@@ -12,8 +13,9 @@ import { Contact } from "@/components/sections/Contact";
 export default function Home() {
   return (
     <div id="top" className="min-h-screen bg-bg">
+      <ParticlesBackground className="fixed inset-0 z-0" />
       <Navbar />
-      <main id="main">
+      <main id="main" className="relative">
         <Hero />
         <About />
         <Record />

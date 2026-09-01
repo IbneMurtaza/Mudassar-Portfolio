@@ -11,7 +11,7 @@ export const profile = {
   linkedinLabel: "linkedin.com/in/muhammad-mudassar-b580ba159",
   resumeUrl: "/resume/Muhammad-Mudassar-CV.pdf",
   /** Set to e.g. "/portrait.jpg" (dropped in /public) to replace the hero's placeholder slot with a real photo. */
-  portraitSrc: "/portrait.jpeg" as string | null,
+  portraitSrc: "/portrait.jpg" as string | null,
   yearsExperience: 6,
 } as const;
 

@@ -4,7 +4,7 @@ import { Chip } from "@/components/ui/Chip";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="card rounded-lg p-[clamp(22px,3vw,36px)]">
+    <div className="card min-w-0 rounded-lg p-[clamp(22px,3vw,36px)]">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div>
           <div className="text-[clamp(24px,3vw,34px)] leading-[1.1] font-bold tracking-[-0.03em]">{project.name}</div>
@@ -31,17 +31,14 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {project.shots ? (
-        <div className="mt-[26px] grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-3">
+        <div className="shots-scroll mt-[26px] flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
           {project.shots.map((shot) => (
-            <div key={shot.src}>
-              <div className="relative aspect-[9/16] overflow-hidden rounded-[14px] border border-[color:var(--border-3)]">
-                <Image
-                  src={shot.src}
-                  alt={shot.caption}
-                  fill
-                  sizes="(min-width: 640px) 20vw, 33vw"
-                  className="object-cover"
-                />
+            <div key={shot.src} className="w-[140px] flex-none snap-start">
+              <div
+                className="relative aspect-[9/16] overflow-hidden rounded-[14px] border border-[color:var(--border-3)]"
+                style={project.shotAspect ? { aspectRatio: project.shotAspect } : undefined}
+              >
+                <Image src={shot.src} alt={shot.caption} fill sizes="140px" className="object-cover" />
               </div>
               <div className="mt-[9px] text-[12.5px] leading-[1.4] text-muted">{shot.caption}</div>
             </div>
