@@ -7,7 +7,7 @@ export function Hero() {
     <header className="mx-auto max-w-[1180px] px-[clamp(20px,5vw,72px)] pt-[clamp(56px,12vh,130px)] pb-[clamp(56px,10vh,110px)]">
       <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-end gap-[clamp(28px,5vw,64px)]">
         <div className="min-w-0 @container [animation:rise_0.7s_ease_both]">
-          <p className="font-mono text-[11.5px] tracking-[0.22em] text-accent uppercase">{profile.title}</p>
+          <p className="font-mono text-[16px] tracking-[0.22em] text-accent uppercase">{profile.title}</p>
           <h1
             lang="en"
             className="mt-[22px] [hyphens:auto] text-[clamp(52px,16cqw,124px)] leading-[0.86] font-bold tracking-[-0.045em] break-words text-balance"

@@ -11,11 +11,10 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="mt-2 text-[14.5px] text-muted-2">{project.org}</div>
         </div>
         <div className="flex items-center gap-2.5">
-          <span className="rounded-full bg-accent px-3 py-1.5 text-xs font-medium text-accent-ink">
-            {project.status}
-          </span>
-          {project.dates ? (
-            <span className="font-mono text-xs text-muted">{project.dates}</span>
+          {project.status === "Live" ? (
+            <span className="rounded-full bg-accent px-3 py-1.5 text-sm font-medium text-accent-ink">
+              {project.status}
+            </span>
           ) : null}
         </div>
       </div>
@@ -54,7 +53,7 @@ export function ProjectCard({ project }: { project: Project }) {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13.5px] text-ink underline decoration-[color:var(--border-3)] underline-offset-4 hover:text-accent hover:decoration-accent"
+              className="text-[13.5px] text-accent underline decoration-accent underline-offset-4 hover:opacity-80"
             >
               {link.label} ↗
             </a>
