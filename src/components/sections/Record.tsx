@@ -19,7 +19,6 @@ export function Record() {
           index="02"
           eyebrow="Record"
           title="The numbers so far"
-          intro="A quick look at six years of shipping native iOS apps."
         />
         <div
           ref={ref}

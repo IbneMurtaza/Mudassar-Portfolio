@@ -7,7 +7,6 @@ export type Project = {
   name: string;
   org: string;
   status: string;
-  dates?: string;
   blurb: string;
   stack: string[];
   links?: { label: string; href: string }[];
@@ -52,8 +51,7 @@ export const projects: Project[] = [
   {
     name: "GrocerApp",
     org: "GrocerApp",
-    status: "Shipped",
-    dates: "2020 — 2022",
+    status: "Live",
     blurb:
       "E-commerce grocery app with 100K+ downloads and 4.5K+ ratings on the App Store. I shipped the Flash Deals feature and the Grocer Club membership program, integrated Checkout and PayFast payments, and kept a 99% crash-free rate on Firebase Crashlytics.",
     stack: ["Swift", "UIKit", "Firebase Crashlytics", "PayFast", "Branch.io"],
@@ -71,8 +69,7 @@ export const projects: Project[] = [
   {
     name: "AgeWiser AI",
     org: "TGI",
-    status: "Shipped",
-    dates: "2022 — Present",
+    status: "Live",
     blurb:
       "Senior care and wellness app built from the ground up at TGI, including project structure and the network layer. Tracks mobility (gait speed, balance, range-of-motion exercises) and offers brain-training games to support cognitive health.",
     stack: ["Swift", "SwiftUI", "Clean Architecture", "Network Layer"],
@@ -87,8 +84,7 @@ export const projects: Project[] = [
   {
     name: "CareWiser",
     org: "TGI",
-    status: "Shipped",
-    dates: "2022 — Present",
+    status: "Live",
     blurb:
       "Care-giving app built from the ground up at TGI, including project structure and the network layer. Pairs an AI care-giver with real-time chat and voice messaging, plus structured functional assessments and results.",
     stack: ["Swift", "SwiftUI", "Clean Architecture", "Network Layer"],
@@ -104,8 +100,7 @@ export const projects: Project[] = [
   {
     name: "NinjaHR",
     org: "TGI",
-    status: "Shipped",
-    dates: "2022 — Present",
+    status: "Live",
     blurb:
       "Employee self-service HR app built from the ground up at TGI, including project structure and the network layer. Covers attendance tracking, a leave-management workflow, and a personal performance overview.",
     stack: ["Swift", "SwiftUI", "Clean Architecture", "Network Layer"],
@@ -120,7 +115,7 @@ export const projects: Project[] = [
   {
     name: "People-i",
     org: "People",
-    status: "Shipped",
+    status: "Live",
     blurb:
       "HR management app for People, an HR outsourcing provider across the Middle East and South Central Asia. Employees mark attendance with geo-location, apply for leave, expenses and travel, and managers review and approve requests — across employee, line-manager and HR portals.",
     stack: ["Swift", "Core Location", "REST APIs"],

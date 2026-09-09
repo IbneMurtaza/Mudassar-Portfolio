@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 const siteUrl = "https://muhammadmudassar.dev";
 const title = `${profile.name} — ${profile.title}`;
 const description =
-  "Muhammad Mudassar is a Senior iOS Developer with 6 years of experience building native, scalable mobile applications in Swift and Objective-C — from architecture and the network layer to release on the App Store.";
+  "Muhammad Mudassar is a Senior iOS Developer with 8+ years of experience building native, scalable mobile applications in Swift and Objective-C — from architecture and the network layer to release on the App Store.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
