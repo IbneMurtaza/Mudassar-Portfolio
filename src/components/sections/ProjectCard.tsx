@@ -1,8 +1,34 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
 import { Chip } from "@/components/ui/Chip";
 
+function useWheelToHorizontalScroll<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    function onWheel(e: WheelEvent) {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      el!.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  return ref;
+}
+
 export function ProjectCard({ project }: { project: Project }) {
+  const shotsRef = useWheelToHorizontalScroll<HTMLDivElement>();
+  const storeLink = project.links?.find((link) => link.label.includes("App Store"))?.href;
+
   return (
     <div className="card min-w-0 rounded-lg p-[clamp(22px,3vw,36px)]">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
@@ -12,9 +38,20 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
         <div className="flex items-center gap-2.5">
           {project.status === "Live" ? (
-            <span className="rounded-full bg-accent px-3 py-1.5 text-sm font-medium text-accent-ink">
-              {project.status}
-            </span>
+            storeLink ? (
+              <a
+                href={storeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-accent px-3 py-1.5 text-sm font-medium text-accent-ink transition-opacity hover:opacity-80"
+              >
+                {project.status}
+              </a>
+            ) : (
+              <span className="rounded-full bg-accent px-3 py-1.5 text-sm font-medium text-accent-ink">
+                {project.status}
+              </span>
+            )
           ) : null}
         </div>
       </div>
@@ -30,7 +67,10 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {project.shots ? (
-        <div className="shots-scroll mt-[26px] flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
+        <div
+          ref={shotsRef}
+          className="shots-scroll mt-[26px] flex snap-x snap-proximity gap-3 overflow-x-auto pb-2"
+        >
           {project.shots.map((shot) => (
             <div key={shot.src} className="w-[140px] flex-none snap-start">
               <div

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { MailIcon, PhoneIcon, LinkedInIcon } from "@/components/ui/icons";
 import { profile } from "@/data/profile";
 
 export function Hero() {
@@ -48,11 +49,22 @@ export function Hero() {
             )}
           </div>
           <div className="mt-[18px] grid gap-2 text-sm text-muted-2">
-            <a href={`mailto:${profile.email}`} className="w-fit">
+            <a href={`mailto:${profile.email}`} className="flex w-fit items-center gap-2 hover:text-accent">
+              <MailIcon className="h-[15px] w-[15px] flex-none" />
               {profile.email}
             </a>
-            <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-fit">
+            <a
+              href={profile.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-fit items-center gap-2 hover:text-accent"
+            >
+              <LinkedInIcon className="h-[15px] w-[15px] flex-none" />
               LinkedIn
+            </a>
+            <a href={`tel:${profile.phone.replace(/\s+/g, "")}`} className="flex w-fit items-center gap-2 hover:text-accent">
+              <PhoneIcon className="h-[15px] w-[15px] flex-none" />
+              {profile.phone}
             </a>
             <div>{profile.location}</div>
           </div>

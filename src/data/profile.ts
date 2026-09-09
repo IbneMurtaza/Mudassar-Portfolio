@@ -7,6 +7,7 @@ export const profile = {
     "Senior iOS Developer building scalable, native mobile products — from the network layer to the App Store.",
   location: "Lahore, Punjab, Pakistan",
   email: "m.mudassarmurtaza@gmail.com",
+  phone: "+92 311 6646594",
   linkedinUrl: "https://www.linkedin.com/in/muhammad-mudassar-b580ba159/",
   linkedinLabel: "linkedin.com/in/muhammad-mudassar-b580ba159",
   resumeUrl: "/resume/Muhammad-Mudassar-CV.pdf",

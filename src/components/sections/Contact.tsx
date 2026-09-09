@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { IconLink } from "@/components/ui/IconLink";
-import { MailIcon, LinkedInIcon } from "@/components/ui/icons";
+import { MailIcon, PhoneIcon, LinkedInIcon } from "@/components/ui/icons";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
@@ -67,12 +67,15 @@ export function Contact() {
             <IconLink href={`mailto:${profile.email}`} label="Email">
               <MailIcon className="h-[19px] w-[19px]" />
             </IconLink>
+            <IconLink href={`tel:${profile.phone.replace(/\s+/g, "")}`} label="Phone">
+              <PhoneIcon className="h-[19px] w-[19px]" />
+            </IconLink>
             <IconLink href={profile.linkedinUrl} label="LinkedIn" external>
               <LinkedInIcon className="h-[19px] w-[19px]" />
             </IconLink>
           </div>
           <Button href={profile.resumeUrl} variant="secondary" className="mt-4" download>
-            Download résumé
+            Download resume
           </Button>
         </div>
 
