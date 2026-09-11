@@ -33,25 +33,39 @@ function validate(form: FormState): FormErrors {
 export function Contact() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   function update<K extends keyof FormState>(key: K, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
     setStatus("idle");
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const nextErrors = validate(form);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    const subject = form.subject.trim() || `Portfolio contact from ${form.name.trim()}`;
-    const body = `${form.message.trim()}\n\n— ${form.name.trim()} (${form.email.trim()})`;
-    const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-    setStatus("sent");
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+      setStatus("sent");
+      setForm(initialForm);
+    } catch {
+      setErrorMessage("Something went wrong. Please try again.");
+      setStatus("error");
+    }
   }
 
   return (
@@ -139,10 +153,12 @@ export function Contact() {
 
           <button
             type="submit"
-            className="mt-1 w-fit justify-self-start rounded-full bg-accent px-[22px] py-[15px] text-[15px] font-medium text-accent-ink transition-opacity hover:opacity-90"
+            disabled={status === "sending"}
+            className="mt-1 w-fit justify-self-start rounded-full bg-accent px-[22px] py-[15px] text-[15px] font-medium text-accent-ink transition-opacity hover:opacity-90 disabled:opacity-60"
           >
-            {status === "sent" ? "Opening your email client ✓" : "Send message"}
+            {status === "sending" ? "Sending…" : status === "sent" ? "Message sent ✓" : "Send message"}
           </button>
+          {status === "error" ? <p className="text-xs text-red-400">{errorMessage}</p> : null}
         </form>
       </Container>
     </section>
